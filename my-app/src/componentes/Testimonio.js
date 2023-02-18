@@ -12,11 +12,11 @@ function Testimonio(props) {
             <div className='contenedor-texto-testimonio'>
                 <p className='nombre-testimonio'>
                     <strong>{props.nombre} </strong>en <strong>{props.pais}</strong>
-                    
-                    </p>
+
+                </p>
                 <p className='cargo-testimonio'>
-                    <strong>{props.cargo} </strong>en <strong>{props.empresa}</strong>
-                    </p> 
+                    {props.cargo} en <strong>{props.empresa}</strong>
+                </p>
                 <p className='texto-testimonio'>"{props.testimonio}"</p>
 
             </div>
