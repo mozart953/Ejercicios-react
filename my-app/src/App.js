@@ -8,7 +8,8 @@ function App() {
       <div>
         <h1>Here is what our alumni say about freeCodeCamp:</h1>
         <Testimonio
-
+          
+          tituloImagen='Imagen de Emma'
           nombre='Emma Bostian'
           pais='Sweden'
           imagen='Emma'
@@ -19,7 +20,8 @@ function App() {
         />
 
         <Testimonio
-
+        
+          tituloImagen='Imagen de Sarah'
           nombre='Sarah Chima'
           pais='Nigeria'
           imagen='Sarah'
@@ -30,7 +32,8 @@ function App() {
         />
 
         <Testimonio
-
+          
+          tituloImagen='Imagen de Shawn'
           nombre='Shawn Wang'
           pais='Singapore'
           imagen='Shawn'
