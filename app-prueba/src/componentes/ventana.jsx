@@ -1,5 +1,6 @@
 import React, { useState, useTransition } from "react";
 import Tarea from "./Tarea";
+import {v4 as uuidv4} from 'uuid';
 
 
 function ventana(props){
@@ -15,21 +16,36 @@ function ventana(props){
         
         setInput(e.target.value.trim());          
         console.log(e.target.value);
+        //texto = e.target.value.trim();
+        
+      
+        
 
     };
 
     const comprobarClic= function(){
        setCount(count+1);
        console.log(count);
+       let tareasNuevas;
 
-       if(count==1){
+       const tareaNueva ={
+        id:uuidv4(),
+        nombre:input,
 
-            tarea= input;
-            setTarea([texto,...tarea]);
-            count =0;
+        };
 
-       }
+        tareasNuevas = [tareaNueva,...tarea];
 
+       setTarea(tareasNuevas);
+        
+
+
+    };
+
+    const EliminarTarea = function(id1){
+        console.log("eliminando")
+        const tareasNuevas = tarea.filter(x=>x.id !==id1);
+        setTarea(tareasNuevas);
     };
 
 
@@ -41,7 +57,11 @@ function ventana(props){
             <button id="boton" onClick={comprobarClic}>Pulsar</button>
 
             <div className="elementos">
-              {tarea}
+              {
+                tarea.map(a=>
+                    <Tarea name={a.nombre} metodo={EliminarTarea} id={a.id}/>
+                )
+              }
             </div>
 
         </div>
@@ -51,14 +71,5 @@ function ventana(props){
 
 }
 
-// function crearElemento(props){
-
-//     let variable = document.createElement('ul');
-//     const elemento = document.createElement('li');
-//     elemento.classList.add('elemento');
-//     elemento.innerText = props.texto;
-//     variable.appendChild(elemento);
-
-// }
 
 export default ventana;
