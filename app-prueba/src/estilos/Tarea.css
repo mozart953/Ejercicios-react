@@ -1,4 +1,10 @@
 .tarea{
     background-color: green;
     display: block;
+    align-items: center;
+}
+.eliminar{
+    background-color: red;
+    display:block;
+    cursor: pointer;
 }
