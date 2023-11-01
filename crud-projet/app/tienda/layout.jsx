@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+export const metadata ={
+    title:"Tienda",
+};
+
+
 function TiendaLayout({children}){
     return(
         <>

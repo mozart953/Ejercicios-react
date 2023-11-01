@@ -17,6 +17,7 @@ function Navbar (){
             <Link href="/tienda">Tienda</Link>
           </li>
           <li><Link href="/tienda/categoria">categorias</Link></li>
+          <li><Link href="/posts">Posts</Link></li>
         </ul>
       </nav>       
     );
