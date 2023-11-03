@@ -10,7 +10,7 @@ export function GET(){
 export async function POST(request){
 
     const {nombre, apellido}= await request.json();
-    console.log(nombre, apellido);
+    console.log(nombre, apellido);//desde postman enviarle un json con la estructura de nombre y apellido
     // return new Response("Hello world");
      return NextResponse.json({message:"posting"});
  }

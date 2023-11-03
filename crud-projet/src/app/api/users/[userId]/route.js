@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET(request, {params}){
-    //console.log(params);
+    //console.log(params);//?nombre=L&apellido=M <-ejemplo
     const {searchParams} = new URL(request.url);
     console.log(searchParams);
     console.log(searchParams.get("nombre"));
