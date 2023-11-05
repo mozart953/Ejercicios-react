@@ -12,7 +12,7 @@ async function loadTasks(){
 
 async function HomePage(){
   const tasks = await loadTasks();
-  console.log(tasks);
+  //console.log(tasks);
 
 
   return(
