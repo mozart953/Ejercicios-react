@@ -1,7 +1,6 @@
 "use client"
-
+import React from "react";
 import { useEffect, useState } from "react";
-import { POST } from "../api/tasks/route";
 import { useRouter } from "next/navigation";
 
 export function NewPage({params}){
@@ -111,3 +110,4 @@ export function NewPage({params}){
 
 }
 
+export default NewPage;
