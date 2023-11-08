@@ -9,14 +9,13 @@ export async function GET(){
 }
 
 export async function POST(request){
-    const {title, description}= await request.json();
+    const {title, nombreImagen} = await request.json();
     //console.log(data);
 
     const nuevaTarea= await prisma.task.create({
         data:{
-            title,
-            description
-
+            title:title,
+            description:nombreImagen
         }
     });
 

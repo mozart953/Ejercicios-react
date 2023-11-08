@@ -20,4 +20,5 @@ model Task{
   title String
   description String?
   createAl DateTime @default(now())
+  nombreImagen String?
 }

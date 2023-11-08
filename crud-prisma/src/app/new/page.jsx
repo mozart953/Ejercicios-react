@@ -7,6 +7,7 @@ export function NewPage({params}){
     console.log(params);
     const [title, setTitle] = useState(" ");
     const [description, setDescription]=useState(" ");
+    const [file, setFile] = useState(null);
 
     useEffect(
         ()=>{
@@ -28,6 +29,8 @@ export function NewPage({params}){
         // const description = e.target.description.value;
         // console.log(title, description);
 
+       
+
         if(params.id){
             const res = await fetch(`/api/tasks/${params.id}`,{
                 method:'PUT',
@@ -40,17 +43,50 @@ export function NewPage({params}){
             console.log(data);
 
         }else{
-            const res =  await fetch('/api/tasks', {
-                method:'POST',
-                body: JSON.stringify({title,description}),
-                headers:{
-                    'Content-Type' : 'application/json'
-                }
-    
-            });
             
-            const data = await res.json();
-            console.log(data);
+            if(file){
+                console.log(file.name);
+                // const formdata = new FormData();
+                // const nombreImagen= formdata.get("image").name;
+                const nombreImagen = String(file.name);
+                
+
+                const res =  await fetch('/api/tasks', {
+                    method:'POST',
+                    body: JSON.stringify({title,nombreImagen}),
+                    headers:{
+                        'Content-Type' : 'application/json'
+                    }
+        
+                });
+                const data = await res.json();
+                console.log(data);
+
+
+            }else{
+                const res =  await fetch('/api/tasks', {
+                    method:'POST',
+                    body: JSON.stringify({title,description}),
+                    headers:{
+                        'Content-Type' : 'application/json'
+                    }
+        
+                });
+
+                const data = await res.json();
+                console.log(data);
+
+
+            }
+
+
+           
+            
+            
+
+
+            
+
 
         }
 
@@ -86,10 +122,16 @@ export function NewPage({params}){
 
                     <div className="flex justify-between">
 
+                    <input name="image" type="file" className="shadow appearance-none border rounded w-full py-2 px-3" 
+                        onChange={(e)=>{setFile(e.target.files[0]); console.log(e.target.files[0])} }/>
+
                     <button 
                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Crear</button>
-
+                                       
+               
                      {
+                        
+
                         params.id && (
                             <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 roundend " type="button"
                             onClick={async ()=>{
@@ -103,7 +145,20 @@ export function NewPage({params}){
                         )
                      }
                      </div>
+
+                     
+                {
+                        
+                        file && (
+                            <div>
+                            <img className="w-64 h-64 object-contain mx-auto" src={URL.createObjectURL(file)} alt="" />
+                            </div>
+                        )
+                        
+
+                }
                 </form>
+
             </div>
         </>
     );
