@@ -49,11 +49,12 @@ export function NewPage({params}){
                 // const formdata = new FormData();
                 // const nombreImagen= formdata.get("image").name;
                 const nombreImagen = String(file.name);
-                
+                const formData = new FormData();
+                formData.append('image', file);               
 
                 const res =  await fetch('/api/tasks', {
                     method:'POST',
-                    body: JSON.stringify({title,nombreImagen}),
+                    body: JSON.stringify({title,description,nombreImagen}),
                     headers:{
                         'Content-Type' : 'application/json'
                     }
@@ -61,6 +62,16 @@ export function NewPage({params}){
                 });
                 const data = await res.json();
                 console.log(data);
+
+                const data1 = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData,
+                    headers:{
+                        'Content-Type':'multipart/form-data'
+                    }
+                  });
+
+
 
 
             }else{
