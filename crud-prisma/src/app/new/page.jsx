@@ -65,10 +65,7 @@ export function NewPage({params}){
 
                 const data1 = await fetch('/api/upload', {
                     method: 'POST',
-                    body: formData,
-                    headers:{
-                        'Content-Type':'multipart/form-data'
-                    }
+                    body: formData
                   });
 
 
